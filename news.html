@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News - Iraqi Armed Forces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <span>القوات المسلحة العراقية - Republic of Iraq</span>
+            <span class="clock" id="live-clock">00:00:00</span>
+        </div>
+        <nav>
+            <a href="home.html" class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <div>IRAQI<br>ARMED FORCES</div>
+            </a>
+            <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="branches.html">Branches</a></li>
+                <li><a href="equipment.html">Equipment</a></li>
+                <li><a href="rank.html">Ranks</a></li>
+                <li><a href="operations.html">Operations</a></li>
+                <li><a href="recruitment.html">Recruitment</a></li>
+                <li><a href="news.html" class="active">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="info-modal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2 id="modal-title">Title</h2>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <main>
+        <div class="section-header">
+            <h2>Military News</h2>
+            <p>Latest updates from the Ministry of Defense.</p>
+        </div>
+        <div class="grid-container">
+            <article class="card">
+                <div class="card-img-container">
+                    <img src="images/img3.jpg" alt="News 1">
+                    <span class="card-badge">Announcement</span>
+                </div>
+                <div class="card-content">
+                    <small style="color: var(--primary-red);">Feb 14, 2025</small>
+                    <h3>New Defense Pact Signed</h3>
+                    <p>Minister of Defense signs a new strategic cooperation agreement with international allies for joint training exercises.</p>
+                    <button class="read-more-btn" onclick="openModal('news_1')">Read Full Story <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-img-container">
+                    <img src="images/img4 (2).jpg" alt="News 2">
+                    <span class="card-badge">Event</span>
+                </div>
+                <div class="card-content">
+                    <small style="color: var(--primary-red);">Feb 10, 2025</small>
+                    <h3>Graduation of 3rd Armored Division</h3>
+                    <p>A prestigious ceremony held in Baghdad for new recruits completing advanced armor training.</p>
+                    <button class="read-more-btn" onclick="openModal('news_2')">Read Full Story <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-img-container">
+                    <img src="images/img3.jpg" alt="News 3">
+                    <span class="card-badge">Community</span>
+                </div>
+                <div class="card-content">
+                    <small style="color: var(--primary-red);">Feb 05, 2025</small>
+                    <h3>Humanitarian Aid in Salahuddin</h3>
+                    <p>Engineering units distribute food and water packages to remote villages near the Hamrin Mountains.</p>
+                    <button class="read-more-btn" onclick="openModal('news_3')">Read Full Story <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </article>
+             <article class="card">
+                <div class="card-img-container">
+                    <img src="images/jakob-owens-Sa04XETPPx0-unsplash.jpg.crdownload" alt="News 4">
+                    <span class="card-badge">Technology</span>
+                </div>
+                <div class="card-content">
+                    <small style="color: var(--primary-red);">Jan 28, 2025</small>
+                    <h3>Cyber Command Established</h3>
+                    <p>A new branch created to defend military networks against foreign state-sponsored hackers.</p>
+                    <button class="read-more-btn" onclick="openModal('news_4')">Read Full Story <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </article>
+             <article class="card">
+                <div class="card-img-container">
+                    <img src="images/istockphoto-2169658424-1024x1024.jpg" alt="News 5">
+                    <span class="card-badge">Infrastructure</span>
+                </div>
+                <div class="card-content">
+                    <small style="color: var(--primary-red);">Jan 15, 2025</small>
+                    <h3>Border Wall Completion</h3>
+                    <p>The western border fencing project is 95% complete, enhancing security against infiltration.</p>
+                    <button class="read-more-btn" onclick="openModal('news_5')">Read Full Story <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-img-container">
+                    <img src="images/irq.jpg" alt="News 6">
+                    <span class="card-badge">Training</span>
+                </div>
+                <div class="card-content">
+                    <small style="color: var(--primary-red);">Jan 02, 2025</small>
+                    <h3>New F-16 Pilots Certified</h3>
+                    <p>Another batch of 12 pilots has completed certification courses in the United States.</p>
+                    <button class="read-more-btn" onclick="openModal('news_6')">Read Full Story <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="flag-bar"></div>
+        <p>&copy; 2025 Iraqi Armed Forces. Ministry of Defense.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branches - Iraqi Armed Forces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <span>القوات المسلحة العراقية - Republic of Iraq</span>
+            <span class="clock" id="live-clock">00:00:00</span>
+        </div>
+        <nav>
+            <a href="home.html" class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <div>IRAQI<br>ARMED FORCES</div>
+            </a>
+            <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="branches.html" class="active">Branches</a></li>
+                <li><a href="equipment.html">Equipment</a></li>
+                <li><a href="rank.html">Ranks</a></li>
+                <li><a href="operations.html">Operations</a></li>
+                <li><a href="recruitment.html">Recruitment</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="info-modal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2 id="modal-title">Title</h2>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <main>
+        <div class="section-header">
+            <h2>Military Branches</h2>
+            <p>The unified structure of the defense apparatus.</p>
+        </div>
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/img4 (1).jpg" alt="Army">
+                    <span class="card-badge">Ground Forces</span>
+                </div>
+                <div class="card-content">
+                    <h3>Iraqi Army</h3>
+                    <p>The largest branch responsible for land-based military operations, including infantry, armor, and artillery.</p>
+                    <button class="read-more-btn" onclick="openModal('army')">Learn More <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/img4 (2).jpg" alt="Air Force">
+                    <span class="card-badge">Air Superiority</span>
+                </div>
+                <div class="card-content">
+                    <h3>Iraqi Air Force</h3>
+                    <p>Responsible for aerial defense, close air support, and strategic transportation.</p>
+                    <button class="read-more-btn" onclick="openModal('airforce')">Learn More <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/img4 (3).jpg"  alt="Navy">
+                    <span class="card-badge">Naval Defense</span>
+                </div>
+                <div class="card-content">
+                    <h3>Iraqi Navy</h3>
+                    <p>Protects the two oil platforms (Khor Al-Amaya and Al-Basra) and the Umm Qasr port.</p>
+                    <button class="read-more-btn" onclick="openModal('navy')">Learn More <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+             <div class="card">
+                <div class="card-img-container">
+                    <img src="images/pexels-pixabay-163443.jpg" alt="CTS">
+                    <span class="card-badge">Elite Forces</span>
+                </div>
+                <div class="card-content">
+                    <h3>COMMANDO (CDO)</h3>
+                    <p>Elite special operations unit trained for hostage rescue and high-risk direct action missions.</p>
+                    <button class="read-more-btn" onclick="openModal('cts')">Learn More <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+             <div class="card">
+                <div class="card-img-container">
+                    <img src="images/img3.jpg" alt="CTS">
+                    <span class="card-badge">Elite Forces</span>
+                </div>
+                <div class="card-content">
+                    <h3>Counter Terrorism (CT)</h3>
+                    <p>Elite special operations unit trained for hostage rescue and high-risk direct action missions.</p>
+                    <button class="read-more-btn" onclick="openModal('cts')">Learn More <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/pexels-artguz-8079183.jpg" alt="CTS">
+                    <span class="card-badge">Elite Forces</span>
+                </div>
+                <div class="card-content">
+                    <h3>Counter Terrorism Service (CTS)</h3>
+                    <p>Elite special operations unit trained for hostage rescue and high-risk direct action missions.</p>
+                    <button class="read-more-btn" onclick="openModal('cts')">Learn More <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="flag-bar"></div>
+        <p>&copy; 2025 Iraqi Armed Forces. Ministry of Defense.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

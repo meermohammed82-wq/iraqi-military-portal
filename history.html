@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - Iraqi Armed Forces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <span>القوات المسلحة العراقية - Republic of Iraq</span>
+            <span class="clock" id="live-clock">00:00:00</span>
+        </div>
+        <nav>
+            <a href="home.html" class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <div>IRAQI<br>ARMED FORCES</div>
+            </a>
+            <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="history.html" class="active">History</a></li>
+                <li><a href="branches.html">Branches</a></li>
+                <li><a href="equipment.html">Equipment</a></li>
+                <li><a href="rank.html">Ranks</a></li>
+                <li><a href="operations.html">Operations</a></li>
+                <li><a href="recruitment.html">Recruitment</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Modal Template (Keep on every page) -->
+    <div id="info-modal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2 id="modal-title">Title</h2>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <main>
+        <div class="section-header">
+            <h2>Historical Timeline</h2>
+            <p>From the founding of the Royal Army to the modern security forces.</p>
+        </div>
+        <div style="position: relative; max-width: 800px; margin: 0 auto; border-left: 4px solid var(--primary-red); padding-left: 30px;">
+            <div style="margin-bottom: 40px; position: relative;">
+                <div style="position: absolute; left: -38px; top: 5px; width: 12px; height: 12px; background: var(--primary-red); border-radius: 50%;"></div>
+                <h4 style="color: var(--dark-gold); font-size: 1.5rem;">1921</h4>
+                <h3>Formation of the Iraqi Army</h3>
+                <p style="color: #aaa;">Established by King Faisal I under British mandate. The nucleus of the national defense force.</p>
+            </div>
+            <div style="margin-bottom: 40px; position: relative;">
+                <div style="position: absolute; left: -38px; top: 5px; width: 12px; height: 12px; background: var(--primary-red); border-radius: 50%;"></div>
+                <h4 style="color: var(--dark-gold); font-size: 1.5rem;">2014-2017</h4>
+                <h3>Victory Over ISIS</h3>
+                <p style="color: #aaa;">The liberation of Mosul and all Iraqi territories from Daesh terrorists after a three-year war.</p>
+            </div>
+            <div style="margin-bottom: 40px; position: relative;">
+                <div style="position: absolute; left: -38px; top: 5px; width: 12px; height: 12px; background: var(--primary-red); border-radius: 50%;"></div>
+                <h4 style="color: var(--dark-gold); font-size: 1.5rem;">2025</h4>
+                <h3>Strategic Autonomy</h3>
+                <p style="color: #aaa;">Focus on indigenous arms production and strengthening air defense capabilities.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="flag-bar"></div>
+        <p>&copy; 2025 Iraqi Armed Forces. Ministry of Defense.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

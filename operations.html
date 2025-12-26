@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operations - Iraqi Armed Forces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <span>القوات المسلحة العراقية - Republic of Iraq</span>
+            <span class="clock" id="live-clock">00:00:00</span>
+        </div>
+        <nav>
+            <a href="home.html" class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <div>IRAQI<br>ARMED FORCES</div>
+            </a>
+            <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="branches.html">Branches</a></li>
+                <li><a href="equipment.html">Equipment</a></li>
+                <li><a href="rank.html">Ranks</a></li>
+                <li><a href="operations.html" class="active">Operations</a></li>
+                <li><a href="recruitment.html">Recruitment</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="info-modal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2 id="modal-title">Title</h2>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <main>
+        <div class="section-header">
+            <h2>Operations Database</h2>
+            <p>Strategic missions past and present.</p>
+        </div>
+        
+        <div class="card" style="margin-bottom: 40px; border: 1px solid var(--dark-gold);">
+            <div class="card-img-container" style="height: 300px;">
+                <img src="images/joel-rivera-camacho-pcUSid_NEpQ-unsplash.jpg" alt="Mosul Liberation">
+                <span class="card-badge" style="background-color: var(--dark-gold); color: black;">Major Operation</span>
+            </div>
+            <div class="card-content">
+                <h2 style="color: white;">Operation We Are Coming, Nineveh</h2>
+                <p>The massive military campaign to retake Mosul, the second-largest city in Iraq, from ISIS control. Lasted from October 2016 to July 2017.</p>
+                <div class="op-stat">
+                    <div><strong>267</strong><span>Days</span></div>
+                    <div><strong>10,000+</strong><span>Terrorists Killed</span></div>
+                    <div><strong>Victory</strong><span>Result</span></div>
+                </div>
+                <br>
+                <button class="read-more-btn" onclick="openModal('op_mosul')">Read Full After Action Report <i class="fas fa-file-alt"></i></button>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-content">
+                    <span style="color: var(--accent-green); font-size: 0.8rem; font-weight: bold;">ONGOING</span>
+                    <h3>Heroes of Iraq</h3>
+                    <p>Ongoing sweeps in the western Anbar desert to eliminate sleeper cells.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <span style="color: #888; font-size: 0.8rem; font-weight: bold;">COMPLETED</span>
+                    <h3>Op. Inherent Resolve Support</h3>
+                    <p>Joint air operations with coalition forces against ISIS remnants.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <span style="color: #888; font-size: 0.8rem; font-weight: bold;">COMPLETED</span>
+                    <h3>Liberation of Fallujah</h3>
+                    <p>Operation recaptured the city in 2016 after it fell to ISIS in 2014.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="flag-bar"></div>
+        <p>&copy; 2025 Iraqi Armed Forces. Ministry of Defense.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

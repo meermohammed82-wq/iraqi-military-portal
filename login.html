@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Portal | وزارة الدفاع</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Face API Library -->
+    <script src="https://unpkg.com/face-api.js"></script>
+    
+    <style>
+        /* --- Military Color Palette --- */
+        :root {
+            --primary-red: #CE1126;
+            --primary-white: #FFFFFF;
+            --primary-black: #000000;
+            --accent-green: #007A3D;
+            --dark-gold: #D4AF37;
+            --bg-dark: #0a0a0a;
+            --panel-bg: rgba(15, 16, 20, 0.98);
+            --border-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', 'Cairo', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--primary-white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.85), rgba(10, 10, 10, 0.9)),
+                url('images/img2.jpg'); 
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* --- Top Flag Bar --- */
+        .flag-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(to left, 
+                var(--primary-red) 33%, 
+                var(--primary-white) 33%, var(--primary-white) 66%, 
+                var(--primary-black) 66%
+            );
+            box-shadow: 0 2px 15px rgba(206, 17, 38, 0.5);
+            z-index: 100;
+        }
+
+        /* --- Login Card --- */
+        .login-container {
+            background: var(--panel-bg);
+            width: 100%;
+            max-width: 440px;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+            text-align: center;
+            position: relative;
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--primary-red);
+        }
+
+        .flag-watermark {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 200px;
+            background: linear-gradient(to right, 
+                var(--primary-red) 33%, 
+                var(--primary-white) 33%, var(--primary-white) 66%, 
+                var(--primary-black) 66%
+            );
+            opacity: 0.08; 
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .lang-switch {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--dark-gold);
+            border: 1px solid var(--dark-gold);
+            padding: 4px 10px;
+            border-radius: 4px;
+            transition: 0.3s;
+            z-index: 10;
+        }
+        .lang-switch:hover {
+            background: var(--dark-gold);
+            color: var(--bg-dark);
+        }
+
+        /* Header */
+        .logo-area {
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .seal-img {
+            width: 90px;
+            height: 90px;
+            margin-bottom: 15px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4)); 
+        }
+
+        .title-en {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+            display: block;
+        }
+
+        .title-ar {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--dark-gold);
+            display: block;
+            margin-top: 5px;
+            direction: rtl;
+        }
+
+        .subtitle {
+            color: #777;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left; 
+            position: relative;
+            z-index: 1;
+        }
+
+        body[dir="rtl"] .form-group { text-align: right; }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            color: #aaa;
+            font-weight: 600;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 15px; 
+            top: 50%;
+            transform: translateY(-50%);
+            color: #444;
+            font-size: 1.1rem;
+        }
+
+        body[dir="rtl"] .input-wrapper i {
+            left: auto;
+            right: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 45px 14px 15px;
+            background: #121212;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: 0.3s;
+        }
+
+        body[dir="rtl"] input { padding: 14px 15px 14px 45px; }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-red);
+            background: #181818;
+            box-shadow: 0 0 10px rgba(206, 17, 38, 0.2);
+        }
+
+        /* Buttons */
+        .btn-login {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-red);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 1px;
+        }
+
+        .btn-face {
+            width: 100%;
+            padding: 15px;
+            background-color: #222;
+            color: var(--dark-gold);
+            border: 1px solid #444;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-face:hover {
+            background-color: #333;
+            border-color: var(--dark-gold);
+        }
+
+        .btn-login:hover {
+            background-color: #a30e1e;
+            box-shadow: 0 5px 20px rgba(206, 17, 38, 0.4);
+        }
+
+        /* Video & Face ID Area */
+        #video-container {
+            width: 100%;
+            margin-top: 15px;
+            border-radius: 4px;
+            overflow: hidden;
+            display: none; /* Hidden until requested */
+            border: 2px solid var(--primary-red);
+            position: relative;
+            background: #000;
+        }
+
+        #video, #overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #video {
+            object-fit: cover;
+        }
+
+        #faceStatus {
+            margin-top: 5px;
+            font-size: 0.8rem;
+            color: #aaa;
+            height: 20px;
+            min-height: 20px;
+        }
+
+        /* Error Message */
+        .error-msg {
+            background: rgba(206, 17, 38, 0.15);
+            border: 1px solid var(--primary-red);
+            color: var(--primary-red);
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            z-index: 1;
+            position: relative;
+        }
+
+        /* Footer Security Badge */
+        .security-badge {
+            margin-top: 25px;
+            font-size: 0.7rem;
+            color: #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            border-top: 1px solid #222;
+            padding-top: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        .security-badge i {
+            color: var(--accent-green);
+        }
+
+        @media (max-width: 500px) {
+            .login-container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body dir="ltr">
+
+    <!-- Top Flag Bar -->
+    <div class="flag-bar"></div>
+
+    <!-- Language Toggle -->
+    <button class="lang-switch" onclick="toggleLanguage()">AR / EN</button>
+
+    <div class="login-container">
+        <!-- Iraq Flag Watermark Background -->
+        <div class="flag-watermark"></div>
+
+        <!-- Error Box -->
+        <div class="error-msg" id="loginError">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="errorText">Invalid Credentials</span>
+        </div>
+
+        <div class="logo-area">
+            <!-- Using the local image you provided -->
+            <img src="images/pexels-7sseiin-15998555.jpg" alt="Seal" class="seal-img">
+            
+            <span class="title-en">RESTRICTED ACCESS</span>
+            <span class="title-ar">الدخول المقيد</span>
+            
+            <p class="subtitle">
+                <span id="subEn">Ministry of Defense / Iraq</span> <br>
+                <span id="subAr">وزارة الدفاع العراقية</span>
+            </p>
+        </div>
+
+        <form onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label id="lblUser">Username / ID</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label id="lblPass">Password</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" required>
+                </div>
+            </div>
+
+            <!-- Face Login Button -->
+            <button type="button" class="btn-face" onclick="startFaceLogin()">
+                <i class="fas fa-id-card-clip"></i> FACE LOGIN
+            </button>
+
+            <!-- Video Area (Hidden initially) -->
+            <div id="video-container">
+                <video id="video" autoplay muted></video>
+                <canvas id="overlay"></canvas>
+            </div>
+            <p id="faceStatus"></p>
+
+            <button type="submit" class="btn-login" id="btnSubmit">
+                LOGIN <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+            </button>
+        </form>
+
+        <div class="security-badge">
+            <i class="fas fa-lock"></i>
+            <span id="securityText">Authorized Personnel Only. IP Logged.</span>
+        </div>
+    </div>
+
+    <script>
+        // --- Bilingual Text Content ---
+        const content = {
+            en: {
+                titleEn: "RESTRICTED ACCESS",
+                titleAr: "الدخول المقيد",
+                subEn: "Ministry of Defense / Iraq",
+                subAr: "وزارة الدفاع العراقية",
+                lblUser: "Username / ID",
+                lblPass: "Password",
+                btnSubmit: "LOGIN",
+                error: "Invalid Credentials",
+                security: "Authorized Personnel Only. IP Logged."
+            },
+            ar: {
+                titleEn: "RESTRICTED ACCESS", 
+                titleAr: "الدخول المقيد",
+                subEn: "",
+                subAr: "وزارة الدفاع العراقية",
+                lblUser: "اسم المستخدم",
+                lblPass: "كلمة المرور",
+                btnSubmit: "دخول آمن",
+                error: "بيانات الدخول غير صحيحة",
+                security: "فقط للموظفين المصرح لهم. تم تسجيل الرقم."
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            const body = document.body;
+            const data = content[currentLang];
+
+            body.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+            document.querySelector('.title-en').innerText = data.titleEn;
+            document.querySelector('.title-ar').innerText = data.titleAr;
+            document.getElementById('subEn').innerText = data.subEn;
+            document.getElementById('subAr').innerText = data.subAr;
+            document.getElementById('lblUser').innerText = data.lblUser;
+            document.getElementById('lblPass').innerText = data.lblPass;
+            document.getElementById('btnSubmit').innerHTML = data.btnSubmit + (currentLang === 'en' ? ' <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>' : ' <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>');
+            document.getElementById('errorText').innerText = data.error;
+            document.getElementById('securityText').innerText = data.security;
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            const errorBox = document.getElementById('loginError');
+
+            if (user === 'admin' && pass === 'admin123') {
+                const btn = document.getElementById('btnSubmit');
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ...';
+                setTimeout(() => { window.location.href = 'home.html'; }, 1500);
+            } else {
+                errorBox.style.display = 'flex';
+                const card = document.querySelector('.login-container');
+                card.style.animation = 'shake 0.4s';
+                setTimeout(() => { card.style.animation = 'none'; }, 400);
+            }
+        }
+
+        // --- FACE API LOGIC (FIXED) ---
+        const video = document.getElementById('video');
+        const overlay = document.getElementById('overlay');
+        const status = document.getElementById('faceStatus');
+        const container = document.getElementById('video-container');
+        let isModelLoaded = false;
+
+        // Load Models
+        async function loadModels() {
+            status.innerText = "Loading Security Models...";
+            try {
+                // Loading models from a stable GitHub Pages CDN
+                await faceapi.nets.tinyFaceDetector.loadFromUri('https://justadudewhohacks.github.io/face-api.js/models');
+                await faceapi.nets.faceLandmark68Net.loadFromUri('https://justadudewhohacks.github.io/face-api.js/models');
+                await faceapi.nets.faceRecognitionNet.loadFromUri('https://justadudewhohacks.github.io/face-api.js/models');
+                isModelLoaded = true;
+                console.log("Models Loaded");
+                status.innerText = "";
+            } catch (e) {
+                console.error(e);
+                status.innerText = "Error: Could not load models (Check Internet/HTTPS)";
+            }
+        }
+
+        async function startFaceLogin() {
+            if (!isModelLoaded) {
+                status.innerText = "Initializing Security Models...";
+                status.style.color = "#aaa";
+                await loadModels();
+                return;
+            }
+
+            status.innerText = "Starting Camera...";
+            status.style.color = "#aaa";
+
+            try {
+                // 1. Get Camera Stream
+                const stream = await navigator.mediaDevices.getUserMedia({ video: {} });
+                video.srcObject = stream;
+                container.style.display = 'block';
+
+                // 2. When video plays, start detecting
+                video.addEventListener('play', () => {
+                    const canvas = faceapi.createCanvasFromMedia(video);
+                    overlay.innerHTML = ""; // Clear previous overlay
+                    
+                    overlay.appendChild(canvas);
+                    
+                    const displaySize = { width: video.videoWidth || 300, height: video.videoHeight || 225 };
+                    faceapi.matchDimensions(canvas, displaySize);
+
+                    // 3. Detection Loop
+                    const interval = setInterval(async () => {
+                        const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks();
+                        
+                        // Resize detections to match video size
+                        const resizedDetections = faceapi.resizeResults(detections, displaySize);
+                        
+                        // Clear and draw on canvas
+                        const ctx = canvas.getContext('2d');
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        faceapi.draw.drawDetections(canvas, resizedDetections);
+                        faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
+
+                        // 4. Check for Face
+                        if (detections.length > 0) {
+                            status.innerText = "Face Verified! Access Granted.";
+                            status.style.color = "var(--accent-green)";
+                            clearInterval(interval);
+                            
+                            // Stop Camera
+                            stream.getTracks().forEach(track => track.stop());
+                            
+                            // Redirect
+                            setTimeout(() => { window.location.href = 'home.html'; }, 1500);
+                        } else {
+                            status.innerText = "Scanning... (Position your face in camera)";
+                            status.style.color = "#aaa";
+                        }
+                    }, 100);
+
+                });
+
+            } catch (err) {
+                console.error(err);
+                alert("Camera Error: Please allow camera access or use HTTPS.");
+                status.innerText = "Camera Access Denied.";
+            }
+        }
+
+        // Add Shake Animation
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes shake {
+                0% { transform: translateX(0); }
+                25% { transform: translateX(-10px); }
+                50% { transform: translateX(10px); }
+                75% { transform: translateX(-10px); }
+                100% { transform: translateX(0); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Start loading models immediately in background
+        loadModels();
+    </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment - Iraqi Armed Forces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <span>القوات المسلحة العراقية - Republic of Iraq</span>
+            <span class="clock" id="live-clock">00:00:00</span>
+        </div>
+        <nav>
+            <a href="home.html" class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <div>IRAQI<br>ARMED FORCES</div>
+            </a>
+            <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="branches.html">Branches</a></li>
+                <li><a href="equipment.html" class="active">Equipment</a></li>
+                <li><a href="rank.html">Ranks</a></li>
+                <li><a href="operations.html">Operations</a></li>
+                <li><a href="recruitment.html">Recruitment</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="info-modal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2 id="modal-title">Title</h2>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <main>
+        <div class="section-header">
+            <h2>Active Equipment</h2>
+            <p>Arsenal of the modern Iraqi military.</p>
+        </div>
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/lincoln-holley-KzV5WkfVD6c-unsplash.jpg" alt="M1 Abrams">
+                </div>
+                <div class="card-content">
+                    <h3>M1A1 Abrams</h3>
+                    <p>The backbone of the armored corps. Features heavy composite armor and a 120mm smoothbore cannon.</p>
+                    <button class="read-more-btn" onclick="openModal('eq_abrams')">View Specs <i class="fas fa-info-circle"></i></button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/don-jackson-wyatt-sbhubyl7lWI-unsplash.jpg" alt="M2 Bradley">
+                </div>
+                <div class="card-content">
+                    <h3>M2 Bradley IFV</h3>
+                    <p>Infantry fighting vehicle providing transport and fire support with its 25mm chain gun.</p>
+                    <button class="read-more-btn" onclick="openModal('eq_bradley')">View Specs <i class="fas fa-info-circle"></i></button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/pln.jpg" alt="F-16">
+                </div>
+                <div class="card-content">
+                    <h3>F-16IQ Fighting Falcon</h3>
+                    <p>Multirole fighter aircraft capable of air-to-air combat and precision ground strikes.</p>
+                    <button class="read-more-btn" onclick="openModal('eq_f16')">View Specs <i class="fas fa-info-circle"></i></button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/m4.jpg" alt="T-72">
+                </div>
+                <div class="card-content">
+                    <h3>T-72M1</h3>
+                    <p>Soviet-era main battle tanks upgraded with new ERA and fire control systems.</p>
+                    <button class="read-more-btn" onclick="openModal('eq_t72')">View Specs <i class="fas fa-info-circle"></i></button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/kevin-schmid-DIq7Bs3ga2s-unsplash.jpg" alt="M4 Carbine">
+                </div>
+                <div class="card-content">
+                    <h3>M4 Carbine / M16</h3>
+                    <p>Standard issue assault rifle for the Iraqi Army and Counter Terrorism forces.</p>
+                    <button class="read-more-btn" onclick="openModal('eq_rifle')">View Specs <i class="fas fa-info-circle"></i></button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/scott-szarapka-i-D-DhUecjU-unsplash.jpg" alt="UH-60">
+                </div>
+                <div class="card-content">
+                    <h3>UH-60 Black Hawk</h3>
+                    <p>Primary utility helicopter for troop transport, medical evacuation, and special operations.</p>
+                    <button class="read-more-btn" onclick="openModal('eq_blackhawk')">View Specs <i class="fas fa-info-circle"></i></button>
+                </div>
+            </div>
+            <!-- Added More Equipment -->
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/stngr-llc-qDWiLMxCKCI-unsplash.jpg" alt="Humvee">
+                </div>
+                <div class="card-content">
+                    <h3>M1151 Up-Armored Humvee</h3>
+                    <p>Standard tactical vehicle for reconnaissance and light transport.</p>
+                    <button class="read-more-btn" onclick="openModal('eq_humvee')">View Specs <i class="fas fa-info-circle"></i></button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/stngr-llc-YivlnxkYIDc-unsplash.jpg" alt="M109">
+                </div>
+                <div class="card-content">
+                    <h3>M109A7 Paladin</h3>
+                    <p>155mm self-propelled howitzer providing long-range fire support.</p>
+                    <button class="read-more-btn" onclick="openModal('eq_paladin')">View Specs <i class="fas fa-info-circle"></i></button>
+                </div>
+            </div>
+             <div class="card">
+                <div class="card-img-container">
+                    <img src="images/steve-woods-cD2eM-TkE68-unsplash.jpg" alt="BTR-4">
+                </div>
+                <div class="card-content">
+                    <h3>BTR-4 Bucephalus</h3>
+                    <p>8x8 wheeled armored personnel carrier manufactured in Ukraine.</p>
+                    <button class="read-more-btn" onclick="openModal('eq_btr4')">View Specs <i class="fas fa-info-circle"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="flag-bar"></div>
+        <p>&copy; 2025 Iraqi Armed Forces. Ministry of Defense.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

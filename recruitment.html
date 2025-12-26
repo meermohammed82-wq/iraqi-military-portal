@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruitment - Iraqi Armed Forces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <span>القوات المسلحة العراقية - Republic of Iraq</span>
+            <span class="clock" id="live-clock">00:00:00</span>
+        </div>
+        <nav>
+            <a href="home.html" class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <div>IRAQI<br>ARMED FORCES</div>
+            </a>
+            <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="branches.html">Branches</a></li>
+                <li><a href="equipment.html">Equipment</a></li>
+                <li><a href="rank.html">Ranks</a></li>
+                <li><a href="operations.html">Operations</a></li>
+                <li><a href="recruitment.html" class="active">Recruitment</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="info-modal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2 id="modal-title">Title</h2>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <main>
+        <div class="section-header">
+            <h2>Service & Recruitment</h2>
+            <p>Answer the call to serve your nation.</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 40px;">
+            <div style="flex: 1; min-width: 300px;">
+                <h3 style="color: var(--dark-gold); margin-bottom: 20px;">Eligibility Criteria (2025)</h3>
+                <ul style="list-style: none; color: #ddd;">
+                    <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-green); margin-right: 10px;"></i> Must be an Iraqi citizen.</li>
+                    <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-green); margin-right: 10px;"></i> Minimum age: 18 years.</li>
+                    <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-green); margin-right: 10px;"></i> Height: At least 165cm (Men).</li>
+                    <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-green); margin-right: 10px;"></i> High school diploma required for NCOs.</li>
+                    <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-green); margin-right: 10px;"></i> No criminal record.</li>
+                </ul>
+
+                <div style="background: #222; padding: 20px; border-left: 3px solid var(--primary-red); margin-top: 30px;">
+                    <h4><i class="fas fa-file-pdf"></i> Download Recruitment Guide</h4>
+                    <p style="font-size: 0.9rem; color: #aaa; margin-bottom: 10px;">Official PDF guide for new recruits.</p>
+                    <button class="read-more-btn" onclick="generatePDF()">Download PDF (2MB) <i class="fas fa-download"></i></button>
+                </div>
+            </div>
+            
+            <div style="flex: 1; min-width: 300px; background: var(--card-bg); padding: 30px; border-radius: 8px;">
+                <h3 style="margin-bottom: 20px;">Initial Application</h3>
+                <form onsubmit="event.preventDefault(); openModal('submit_success');">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>National ID</label>
+                        <input type="text" placeholder="NID Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Branch Preference</label>
+                        <select>
+                            <option>Iraqi Army</option>
+                            <option>Iraqi Air Force</option>
+                            <option>Navy</option>
+                            <option>Federal Police</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="cta-button btn-primary" style="width: 100%;">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="flag-bar"></div>
+        <p>&copy; 2025 Iraqi Armed Forces. Ministry of Defense.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
